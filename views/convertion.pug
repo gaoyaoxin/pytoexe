@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/css/uikit.min.css')
+    link(rel='stylesheet', href='/bower_components/dropzone/dist/dropzone.css')
+    meta(name='csrf-token', content='XYZ123')
+  body
+    div(class="uk-container" style="margin-top: 40px;")
+      form#upload-widget.dropzone(method='post', action='/uploadpy' class='dropzone')
+        .fallback
+          input(name='file', type='file')
+      p #{pyfile}
+      p #{libs}
+      a(class="downloadlink")
+        button.uk-button.uk-button-primary(onclick='convertstart()', class="startconv") Start conversion
+      hr
+      p.uk-text-success(class="whatcurrent") Click on 'Start conversion'
+      progress.uk-progress(value='0', max='100', id="pbar")
+      hr
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="/js/socket.io.js") 
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js')
+    script(src='/bower_components/dropzone/dist/dropzone.js')
+    script(src="/js/main.js") 
