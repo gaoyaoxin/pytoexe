@@ -9,6 +9,6 @@ The objective: an online converter where the client uploads a `.py file` (python
 I'm using `PyInstaller` to convert my .py file to a Windows .exe file. But it doesn't really matter. 
 I need to run multiple shell commands, like moving the file from one folder to another, creating a new (unique) folder, etc..
 
-*The problem* -> I want to start the conversion (so, running the first shell command, like creating an empty folder for later use), THEN make the progress bar go from 0% to 10%, THEN run the second command line, THEN make the progress bar go from 10% to 40%, and so on until I've ran the very last operation and my progress bar is at 100%.
+*The problem* -> I want to start the conversion (so, running the first shell command, like creating an empty folder for later use), THEN make the progress bar go from 0% to 10%, THEN run the second command line, THEN make the progress bar go from 10% to 40%, and so on until the very last operation is run and my progress bar is at 100%.
 
 Thanks for your help, fellow programmer!
