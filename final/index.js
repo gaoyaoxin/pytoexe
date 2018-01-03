@@ -6,7 +6,6 @@ const port = process.env.PORT || 7000;
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const shortid = require('shortid');
-// const sleep = require('sleep');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const formidable = require('formidable');
@@ -17,10 +16,7 @@ app.use(express.static('public'));
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
-/*
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
-*/
+
 app.post('/upload', function(req, res){
 
   // create an incoming form object
@@ -40,7 +36,6 @@ app.post('/upload', function(req, res){
         console.log("error renaming file!");
       }
      });
-    // fs.writeFile("text.txt", data, (error) => { /* handle error */ });
   });
 
   // log any errors that occur
@@ -55,8 +50,6 @@ app.post('/upload', function(req, res){
 
   // parse the incoming request containing the form data
   form.parse(req)
-
-  // console.log(req);
 });
 
 resourcepathfunction = `
@@ -192,98 +185,33 @@ io.on('connection', function(client) {
         },
         function (callback) {
           io.to(room_).emit('step3');
+          callback(null, '');
         },
         function (callback) {
-          // if lib != ""
-          require('child_process').exec("wine pip3 uninstall " + libraries_ + " -y", callback);
+          require('child_process').exec("rm ./" + no_ext_filename_ + ".spec", callback);
+        },
+        function (callback) {
+          if (libraries_ == "") {
+            callback(null, '');
+          } else {
+            require('child_process').exec("wine pip3 uninstall " + libraries_ + " -y", callback);
+            callback(null, '');
+          }
         },
         function (callback) {
           io.to(room_).emit('step4', {roomfolder: room_, filenamenoext: no_ext_filename_});
           callback(null, '');
+        },
+        function (callback) {
+          client.leave(room_);
+          callback(null, '');
         }
-
-        // TO DO
-        // -> sudo wine pip3 uninstall selenium -y
-
     ],
     function (err, result) {
         console.log(result);
     });
-
-
-
-
-
-    // #1 -> installing libraries
-
-/*
-    // #2 -> run pyinstaller
-    // var result = require('child_process').execSync('wine pyinstaller -y ./uploads/' + unique_id + "/" + pyfile.name + " --distpath ./pyfiles/" + unique_id + "/dist/ --workpath ./pyfiles/" + unique_id + "/build/ --onefile");
-    io.to(data.room).emit('step2', '');
-    var run_pyinstaller = require('child_process').execSync('wine pyinstaller -y ./uploads/' + filename_ + " --distpath ./uploads/" + room_ + "/dist/ --workpath ./uploads/" + room_ + "/build/ --onefile");
-
-    // #3 -> move file to public folder
-    io.to(data.room).emit('step3', {roomfolder: room_, filenamenoext: no_ext_filename_});
-    fs.mkdirSync('./public/pyfilesdownload/' + room_);
-    var move_file = require('child_process').execSync('cp ./uploads/' + room_ + "/dist/" + no_ext_filename_ + ".exe ./public/pyfilesdownload/" + room_ + "/");
-*/
-    /*
-    client.leave(data);
-    */
   });
 });
-
-/*
-app.post('/uploadpy', function(req, res) {
-
-  pyfile = req.files.sampleFile;
-  unique_id = shortid.generate();
-  libs = req.body.py_libraries;
-  pyfilewithoutext = (req.files.sampleFile.name).split(".")[0];
-
-  fs.mkdirSync('./pyfiles/' + unique_id);
-  fs.mkdirSync('./public/pyfilesdownload/' + unique_id);
-
-  // move file to proper dir
-  pyfile.mv('./pyfiles/' + unique_id + "/" + pyfile.name, function(err) {
-    if (err) {
-      return res.status(500).send(err);
-    } else {
-      // if succcessfully moved file, we can start convertion
-      res.render('convertion', {
-        pyfile: pyfile.name,
-        uniqueid: unique_id,
-        libs: libs
-      });
-      // when user land on the initial convertion page
-      io.on('connection', function(client) {
-        client.on('subscribe', function(data) { client.join(data.room); })
-        console.log('Client connected...');
-
-        // when user click on 'convert'
-        client.on('convertstart', function(data) {
-          console.log('Joined room ' + data);
-          client.join(data);
-
-          // #1 -> download libraries with pip
-          var result = require('child_process').execSync('sudo wine pip3 install ' + libs);
-          io.to(data).emit('step1', libs);
-
-          // #2 -> run pyinstaller
-          var result = require('child_process').execSync('wine pyinstaller -y ./pyfiles/' + unique_id + "/" + pyfile.name + " --distpath ./pyfiles/" + unique_id + "/dist/ --workpath ./pyfiles/" + unique_id + "/build/ --onefile");
-          io.to(data).emit('step2', '');
-
-          // #3 -> move file to public folder
-          var result = require('child_process').execSync('cp ./pyfiles/' + unique_id + "/dist/" + pyfilewithoutext + ".exe ./public/pyfilesdownload/" + unique_id + "/");
-          io.to(data).emit('step3', {pyfilewithoutext: pyfilewithoutext, unique_id:unique_id});
-
-          client.leave(data);
-        });
-      });
-    }
-  });
-});
-*/
 
 app.get('/', function(req, res){
   res.render('makeconv');
