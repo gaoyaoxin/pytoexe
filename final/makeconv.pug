@@ -1,0 +1,101 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Py2Exe Free Online Converter
+    meta(name='description', content='')
+    meta(name='author', content='')
+    link(rel='stylesheet', href='css/skeleton.css')
+    link(rel='stylesheet', href='css/style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/components/progress.css')
+    link(href='css/jquery.tagit.css', rel='stylesheet', type='text/css')
+    link(href='css/tagit.ui-zendesk.css', rel='stylesheet', type='text/css')
+    link(rel='icon', type='image/png', href='images/favicon.png')
+  body
+    noscript
+      center.noscriptmsg Please enable javascript
+    .container
+      .row
+        .twelve.columns
+          img.u-pull-left.imglogo(src='https://www.python.org/static/opengraph-icon-200x200.png')
+          p.u-pull-left.logo-text  py2exe 
+          p.u-pull-left.logo-text-description  online converter 
+          .u-pull-right.ghbut
+            a.github-button(href='https://github.com/michaelcukier', data-size='large', aria-label='Follow @michaelcukier on GitHub')
+              | Follow @michaelcukier
+            a.github-button(href='https://github.com/michaelcukier/py2exe.net', data-icon='octicon-star', data-size='large', data-show-count='true', aria-label='Star michaelcukier/py2exe.net on GitHub')
+              | Star
+      .row
+        .twelve.columns.bordershadow.site-description
+          .whatispytoexe  What is Py2Exe.net? 
+          br
+          |         Py2Exe.net is an online utility that allows you to easily convert py to exe
+      .row
+        .room_id
+        .twelve.columns.bordershadow.steps
+          .yellow-rectangle.u-pull-left  
+          |  1  ➜  UPLOAD YOUR .PY FILE 
+          br
+          hr
+          .fileselector1.upload-btn
+            i.fa.fa-cloud-upload(aria-hidden='true')
+            |  Drop or select your .py file...
+          input#upload-input-1(type='file', name='uploads[]')
+      .row
+        .twelve.columns.bordershadow.steps
+          .yellow-rectangle.u-pull-left  
+          |  2  ➜  CHOOSE PYTHON VERSION 
+          br
+          hr
+          .pythonversion2.u-pull-left  Python 2 
+          .pythonversion3.u-pull-left(style='margin-left: 10px;')  Python 3 
+      .row
+        .twelve.columns.bordershadow.steps
+          .yellow-rectangle.u-pull-left  
+          |  3  ➜  IMPORT LIBRARIES (OPTIONAL) 
+          hr
+          .autotags
+            ul#myTags
+          |  • examples: facebook-sdk, selenium, numpy, pandas
+          br
+          |  • you must write the libraries as you would do 'pip install ...'
+      .row
+        .twelve.columns.bordershadow.steps
+          .yellow-rectangle.u-pull-left  
+          |  4  ➜  ADDITIONAL FILES (OPTIONAL) 
+          br
+          hr
+          .fileselector2.upload-btn
+            i.fa.fa-cloud-upload(aria-hidden='true')
+            |  Drop or select additional file(s)...
+          input#upload-input-2(type='file', name='uploads[]', multiple="multiple")
+      .row
+        .twelve.columns.bordershadow.steps
+          .yellow-rectangle.u-pull-left  
+          |  5  ➜  CUSTOM ICON (OPTIONAL) 
+          br
+          hr
+          .fileselector3.upload-btn
+            i.fa.fa-cloud-upload(aria-hidden='true')
+            |  Drop or select your .ico file...
+          input#upload-input-3(type='file', name='uploads[]')
+      .row
+        .twelve.columns.convertbutton
+          .button.button-primary.convbut  CONVERT .PY TO .EXE NOW 
+      // .whatcurrent
+      .row
+        .twelve.columns.footer.bordershadow
+          a.social-btn(href='https://www.facebook.com/Py2App-553330731684826/')
+            i.fa.fa-facebook-official.fa-2x(aria-hidden='true')
+          a.social-btn.social-btn-gap(href='https://github.com/michaelcukier/py2exe.net/')
+            i.fa.fa-github.fa-2x(aria-hidden='true')
+          a.social-btn.social-btn-gap(href='http://michaelcukier.com')
+            i.fa.fa-male.fa-2x(aria-hidden='true')
+  script(src='https://buttons.github.io/buttons.js')
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+  script(src="/js/socket.io.js") 
+  script(src='https://unpkg.com/sweetalert2@7.2.0/dist/sweetalert2.all.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js', type='text/javascript', charset='utf-8')
+  script(src='js/tag-it.js', type='text/javascript', charset='utf-8')
+  script(src='/js/main.js')
