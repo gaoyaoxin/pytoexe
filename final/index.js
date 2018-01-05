@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 80;
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const shortid = require('shortid');
@@ -63,12 +63,22 @@ def resource_path(relative):
 /* THIS IS THE CODE THAT FIRES ONCE A PY FILE HAS BEEN UPLOADED successfully */
 io.on('connection', function(client) {
   client.on('convertstart', function(data) {
+    var reachedConvertion = false;
+
     var room_ = data.room;
     var filename_ = data.filename;
     var no_ext_filename_ = (data.filename).split(".")[0];
-    var libraries_ = data.libs.toString().replace(/,/g, " ");
+    var libraries_ = data.libs.toString();
     var addfiles_ = data.additionalfiles;
     var icofile_ = data.icofile;
+
+    // avoid being hacked by inserting '' between libraries name
+    if (libraries_ != "") {
+      clean_list_lib = "";
+      var gothrough = libraries_.split(",").map(function (val) {
+        clean_list_lib += " '" + val + "'"
+      });
+    }
 
     async.series([
         function (callback) {
@@ -85,7 +95,7 @@ io.on('connection', function(client) {
         },
         function (callback) {
           // create folder called additionalfiles
-          if (addfiles_ == " Drop or select additional file(s)...") {
+          if (addfiles_ == " Select additional file(s)...") {
             callback(null, '');
           } else {
             fs.mkdir('./workingdir/' + room_ + '/additionalfiles', callback);
@@ -93,26 +103,26 @@ io.on('connection', function(client) {
         },
         function (callback) {
           // 2. move .py file in that folder
-          require('child_process').exec('mv ./uploads/' + filename_ + " ./workingdir/" + room_ + "/" , callback);
+          require('child_process').exec('mv "./uploads/' + filename_ + '" ./workingdir/' + room_ + '/', callback);
         },
         function (callback) {
           // 3. move additional file(s) in that folder
-          if (addfiles_ == " Drop or select additional file(s)...") {
+          if (addfiles_ == " Select additional file(s)...") {
             callback(null, '');
           } else {
             var str = addfiles_;
             var arr = str.split(",").map(function (val) {
-              require('child_process').exec('mv ./uploads/' + val + " ./workingdir/" + room_ + "/additionalfiles/" );
+              require('child_process').exec('mv "./uploads/' + val + '" ./workingdir/' + room_ + "/additionalfiles/" );
             });
             callback(null, '');
           }
         },
         function (callback) {
           // 4. moving .ico file in that folder
-          if (icofile_ == " Drop or select your .ico file...") {
+          if ((icofile_ == " Select your .ico file...") || (icofile_ == "Error: this is not a .ico file")) {
             callback(null, '');
           } else {
-            require('child_process').exec('mv ./uploads/' + icofile_ + " ./workingdir/" + room_ + "/" , callback);
+            require('child_process').exec('mv "./uploads/' + icofile_ + '" ./workingdir/' + room_ + "/" , callback);
           }
         },
 
@@ -130,7 +140,7 @@ io.on('connection', function(client) {
           if (libraries_ == "") {
             callback(null, '');
           } else {
-            require('child_process').exec('sudo wine pip3 install ' + libraries_, callback);
+            require('child_process').exec('sudo wine pip3 install ' + clean_list_lib, callback);
           }
         },
         function (callback) {
@@ -138,64 +148,79 @@ io.on('connection', function(client) {
           callback(null, '');
         },
 
-// modify .py file -> 1. add resourcepath function
+// modify .py file -> 1. add resourcepath function IF there are additional files
 
         function (callback) {
-          var data = fs.readFileSync("./workingdir/" + room_ + "/" + filename_); //read existing contents into data
-          var fd = fs.openSync("./workingdir/" + room_ + "/" + filename_, 'w+');
-          var buffer = new Buffer(resourcepathfunction);
-          fs.writeSync(fd, buffer, 0, buffer.length, 0); //write new data
-          fs.writeSync(fd, data, 0, data.length, buffer.length); //append old data
-          fs.close(fd);
-          callback(null, '');
+          if (addfiles_ != " Select additional file(s)...") {
+            var data = fs.readFileSync("./workingdir/" + room_ + "/" + filename_); //read existing contents into data
+            var fd = fs.openSync("./workingdir/" + room_ + "/" + filename_, 'w+');
+            var buffer = new Buffer(resourcepathfunction);
+            fs.writeSync(fd, buffer, 0, buffer.length, 0); //write new data
+            fs.writeSync(fd, data, 0, data.length, buffer.length); //append old data
+            fs.close(fd);
+            callback(null, '');
+          } else {
+            callback(null, '');
+          }
         },
         // 2. replace every occurence of <filename> with resource_path(os.path.join('data', '<filename>'))
         function (callback) {
-          var str2 = addfiles_;
-          var arr2 = str2.split(",").map(function (val2) {
-            replacement = "resource_path(os.path.join('data', '" + val2 + "'))";
-            repout.sed('-i', '"' + val2 + '"', replacement, "./workingdir/" + room_ + "/" + filename_);
-          });
-          callback(null, '');
-        },
-        function (callback) {
-          if (addfiles_ == " Drop or select additional file(s)..." && icofile_ == " Drop or select your .ico file...") {
-            // possibility 1 -> no add files and no ico file
-            require('child_process').exec('wine pyinstaller -y ./workingdir/' + room_ + '/' + filename_ + " --distpath ./workingdir/" + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --onefile --icon=./basic-logo.ico --clean", callback);
-
-          } else if (addfiles_ != " Drop or select additional file(s)..." && icofile_ == " Drop or select your .ico file...") {
-            // possibility 2 -> add files only
-            cmd = 'wine pyinstaller -y ./workingdir/' + room_ + '/' + filename_ + ' --distpath ./workingdir/' + room_ + '/dist/ --workpath ./workingdir/' + room_ + '/build/ --onefile --icon=./basic-logo.ico --clean --add-data "workingdir/' + room_ + '/additionalfiles/;data"'
-            require('child_process').exec(cmd, callback);
-
-          } else if (addfiles_ == " Drop or select additional file(s)..." && icofile_ != " Drop or select your .ico file...") {
-            // possibility 3 -> ico file only
-            require('child_process').exec('wine pyinstaller -y ./workingdir/' + room_ + '/' + filename_ + " --distpath ./workingdir/" + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --onefile --icon=./workingdir/" + room_ + "/" + icofile_ + " --clean", callback);
-
-          } else if (addfiles_ != " Drop or select additional file(s)..." && icofile_ != " Drop or select your .ico file...") {
-            // possibility 4 -> add files AND ico file
-            require('child_process').exec('wine pyinstaller -y ./workingdir/' + room_ + '/' + filename_ + " --distpath ./workingdir/" + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --onefile --icon=./workingdir/" + room_ + "/" + icofile_ + " --clean " + '--add-data "workingdir/' + room_ + '/additionalfiles/;data"', callback);
+          if (addfiles_ != " Select additional file(s)...") {
+            var str2 = addfiles_;
+            var arr2 = str2.split(",").map(function (val2) {
+              replacement = "resource_path(os.path.join('data', '" + val2 + "'))";
+              repout.sed('-i', '"' + val2 + '"', replacement, "./workingdir/" + room_ + "/" + filename_);
+            });
+            callback(null, '');
+          } else {
+            callback(null, '');
           }
         },
+
+// start convertion with PyInstaller
+
+        function (callback) {
+          reachedConvertion = true;
+          if ((addfiles_ == " Select additional file(s)..." && icofile_ == " Select your .ico file...") || (addfiles_ == " Select additional file(s)..." && icofile_ == "Error: this is not a .ico file")) {
+            // possibility 1 -> no add files and no ico file
+            require('child_process').exec('wine pyinstaller -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --onefile --icon=./basic-logo.ico --clean", callback);
+
+          } else if ((addfiles_ != " Select additional file(s)..." && icofile_ == " Select your .ico file...") || (addfiles_ != " Select additional file(s)..." && icofile_ == "Error: this is not a .ico file")) {
+            // possibility 2 -> add files only
+            cmd = 'wine pyinstaller -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + '/dist/ --workpath ./workingdir/' + room_ + '/build/ --onefile --icon=./basic-logo.ico --clean --add-data "workingdir/' + room_ + '/additionalfiles/;data"'
+            require('child_process').exec(cmd, callback);
+
+          } else if ((addfiles_ == " Select additional file(s)..." && icofile_ != " Select your .ico file...") || (addfiles_ == " Select additional file(s)..." && icofile_ != "Error: this is not a .ico file")) {
+            // possibility 3 -> ico file only
+            require('child_process').exec('wine pyinstaller -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + '/build/ --onefile --icon="./workingdir/' + room_ + "/" + icofile_ + '" --clean', callback);
+
+          } else if ((addfiles_ != " Select additional file(s)..." && icofile_ != " Select your .ico file...") || (addfiles_ != " Select additional file(s)..." && icofile_ != "Error: this is not a .ico file")) {
+            // possibility 4 -> add files AND ico file
+            require('child_process').exec('wine pyinstaller -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + '/build/ --onefile --icon="./workingdir/' + room_ + "/" + icofile_ + '" --clean ' + '--add-data "workingdir/' + room_ + '/additionalfiles/;data"', callback);
+          }
+        },
+
+// convertion done, now move file to downloadable directory
+
         function (callback) {
           fs.mkdir('./public/pyfilesdownload/' + room_, callback);
         },
         function (callback) {
-          require('child_process').exec('mv ./workingdir/' + room_ + "/dist/" + no_ext_filename_ + ".exe ./public/pyfilesdownload/" + room_ + "/", callback);
+          require('child_process').exec('mv "./workingdir/' + room_ + "/dist/" + no_ext_filename_ + '.exe" ./public/pyfilesdownload/' + room_ + "/", callback);
         },
         function (callback) {
           io.to(room_).emit('step3');
           callback(null, '');
         },
         function (callback) {
-          require('child_process').exec("rm ./" + no_ext_filename_ + ".spec", callback);
+          reachedConvertion = false; // if we reach that point, the .spec file will already be removed
+          require('child_process').exec('rm "./' + no_ext_filename_ + '.spec"', callback);
         },
         function (callback) {
           if (libraries_ == "") {
             callback(null, '');
           } else {
-            require('child_process').exec("wine pip3 uninstall " + libraries_ + " -y", callback);
-            callback(null, '');
+            require('child_process').exec("wine pip3 uninstall " + clean_list_lib + " -y", callback);
           }
         },
         function (callback) {
@@ -208,14 +233,34 @@ io.on('connection', function(client) {
         }
     ],
     function (err, result) {
-        console.log(result);
+        if (err) {
+          io.to(room_).emit('error_happenned');
+          fs.writeFile("./errorlogs/" + room_ + "-" + filename_ + ".txt", err, function(the_error) {
+            if(the_error) { return console.log("couldnt write damn file"); }
+          });
+          if (reachedConvertion == true) {
+            require('child_process').exec('rm "./' + no_ext_filename_ + '.spec"');
+          }
+        }
     });
   });
 });
 
 app.get('/', function(req, res){
+  // res.render('makeconv');
+  res.send("in maintenance (5rd Jan 2018) - will be back shortly");
+});
+
+
+app.get('/dev', function(req, res){
   res.render('makeconv');
 });
+
+/*
+app.get('*', function(req, res){
+  res.render('makeconv');
+});
+*/
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
