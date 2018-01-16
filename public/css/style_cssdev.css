@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Nunito";
-    src: url(http://py2exe.net/font/Nunito-Light.ttf) format("truetype");
+  font-family: "Nunito";
+  src: url(http://py2exe.net/font/Nunito-Light.ttf) format("truetype");
 }
 
 body {
@@ -9,26 +9,12 @@ body {
 	background-color: #FBFBFB;
 }
 
-.importlibscontainer,
-.addfilescontainer,
-.customiconcontainer,
-.appspeccontainer {
-  display: none;
-}
-
-.hr {
+hr {
 	border-top: 1px solid #FFCC00 !important;
-	margin-top: 9px;
+	margin-top: 7px;
 	margin-bottom: 15px;
 	margin-left: -10px;
 	margin-right: -10px;
-}
-
-.hr1,
-.hr2,
-.hr3,
-.hr4 {
-    margin-top: 13px;
 }
 
 a:hover {
@@ -36,8 +22,7 @@ a:hover {
 }
 
 .bordershadow {
-  	box-shadow: 0px 1px 10px 0px rgba(219,219,219,1);
-    border-radius: 4px;
+  	box-shadow: 0px 1px 10px 0px rgba(219,219,219,1)
 }
 
 .button {
@@ -56,18 +41,17 @@ a:hover {
 	padding: 10px;
 	color: grey;
 	border-radius: 5px;
-	text-align: left;
+	text-align: center;
 	cursor: pointer;
-  padding-left: 15px;
 }
 
 .yellow-rectangle {
-  width: 10px;
-  height: 14px;
-  background: #FFCC00;
-  margin-right: 10px;
-  margin-left: -10px;
-  margin-top: 10px;
+	width: 10px;
+	height: 41px;
+	background: #FFCC00;
+	margin-right: 10px;
+	margin-left: -10px;
+	margin-top: -10px;
 }
 
 .ghbut {
@@ -83,17 +67,6 @@ a:hover {
 	text-align: center;
 	color: lightgrey;
 	cursor: pointer;
-}
-
-.window-based,
-.console-based
-{
-	border: solid 3px #EEEEEE;
-	padding: 10px;
-	text-align: center;
-	color: lightgrey;
-	cursor: pointer;
-  border-radius: 3px;
 }
 
 .footer {
@@ -112,6 +85,7 @@ a:hover {
 
 .steps {
 	background-color: white;
+	margin-top: 25px;
 	padding: 10px;
 }
 
@@ -122,11 +96,10 @@ a:hover {
 
 .convbut {
 	width: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 50px;
 	background-color: #458BC6 !important;
 	border: 1px solid #458BC6 !important;
 	font-size: 15px;
-		margin-left: 6%;
 }
 
 .convbut:hover{
@@ -153,22 +126,20 @@ a:hover {
 
 .imglogo {
   width: 50px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .logo-text {
-  margin-top: 9px;
-  font-size: 30px;
-  color: #666666;
-  margin-left: 10px;
+	margin-top: 15px;
+	font-size: 30px;
+	color: #666666;
+	margin-left: 10px;
 }
 
 .logo-text-description {
-  margin-top: 19px;
-  margin-left: 20px;
-  color: grey;
-  font-size: 17px;
-  letter-spacing: 0.04em;
+	margin-top: 30px;
+	margin-left: 20px;
+	color: grey;
 }
 
 .inputlibraries {
@@ -264,7 +235,7 @@ a:hover {
 }
 
 .autotags {
-	cursor: text !important;
+	cursor: pointer !important;
 }
 
 .tagit-choice {
@@ -278,6 +249,7 @@ a:hover {
 }
 
 .alert_conv_stat {
+	border: 1px dashed lightgrey;
 	text-align: center;
 	color: grey;
 }
@@ -290,11 +262,6 @@ a:hover {
   padding: 0px 40px !important;
 }
 
-.swal2-modal .swal2-styled:focus {
-	-webkit-box-shadow: none !important;
-	box-shadow: none!important;
-}
-
 .text-info {
   background-color: #fef4d5;
   padding: 10px;
@@ -304,68 +271,10 @@ a:hover {
 }
 
 .socialbtngroup {
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 ul.tagit li:not(:first-child) ::-webkit-input-placeholder {opacity: 0;}
 ul.tagit li:not(:first-child) ::-moz-placeholder {opacity: 0;}
 ul.tagit li:not(:first-child) ::-ms-input-placeholder {opacity: 0;}
 ul.tagit li:not(:first-child) ::placeholder {opacity: 0;}
-
-.showbutton_addfiles,
-.showbutton_importlibs,
-.showbutton_icofile,
-.showbutton_appspec {
-  cursor: pointer;
-  border: 1px solid #1EAEDB;
-  padding: 3px;
-  padding-right: 10px;
-  padding-left: 10px;
-  border-radius: 2px;
-}
-
-.showbutton_addfiles:hover,
-.showbutton_importlibs:hover,
-.showbutton_icofile:hover,
-.showbutton_appspec:hover {
-  color: #1EAEDB;
-}
-
-.likebutton {
-	border: solid 2px #61A661;
-	padding: 10px;
-	text-align: center;
-	color: #61A661;
-	cursor: pointer;
-	border-radius: 3px;
-	width: 38%;
-	font-weight: 900;
-}
-
-
-.dislikebutton {
-	border: solid 2px #c9302c;
-	padding: 10px;
-	text-align: center;
-	color: #c9302c;
-	cursor: pointer;
-	border-radius: 3px;
-	width: 49%;
-    font-weight: 900;
-}
-
-.bigseparator {
-	border-top: 1px dashed lightgrey;
-	border-bottom: 1px dashed #fff;
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
-}
-
-.eight.columns.bordershadow.steps {
-	margin-left: 3.97%;
-	margin-top: 15px;
-}
-
-
-
-
