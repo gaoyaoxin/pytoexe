@@ -1,0 +1,43 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+135 INFO: PyInstaller: 3.3.1
+135 INFO: Python: 3.4.4
+136 INFO: Platform: Windows-XP-5.1.2600-SP3
+137 INFO: wrote Z:\p2e\pgcd.spec
+143 INFO: UPX is not available.
+144 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+152 INFO: Extending PYTHONPATH with paths
+['Z:\\p2e\\workingdir\\1516448931397', 'Z:\\p2e']
+152 INFO: checking Analysis
+152 INFO: Building Analysis because out00-Analysis.toc is non existent
+153 INFO: Initializing module dependency graph...
+161 INFO: Initializing module graph hooks...
+165 INFO: Analyzing base_library.zip ...
+7126 INFO: Processing pre-find module path hook   distutils
+10371 INFO: running Analysis out00-Analysis.toc
+10865 INFO: Caching module hooks...
+10877 INFO: Analyzing Z:\p2e\workingdir\1516448931397\pgcd.py
+Traceback (most recent call last):
+  File "C:\Python34\Scripts\pyinstaller-script.py", line 9, in <module>
+    load_entry_point('PyInstaller==3.3.1', 'console_scripts', 'pyinstaller')()
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 94, in run
+    run_build(pyi_config, spec_file, **vars(args))
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 46, in run_build
+    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 791, in main
+    build(specfile, kw.get('distpath'), kw.get('workpath'), kw.get('clean_build'))
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 737, in build
+    exec(text, spec_namespace)
+  File "<string>", line 16, in <module>
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 213, in __init__
+    self.__postinit__()
+  File "c:\Python34\lib\site-packages\PyInstaller\building\datastruct.py", line 161, in __postinit__
+    self.assemble()
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 415, in assemble
+    priority_scripts.append(self.graph.run_script(script))
+  File "c:\Python34\lib\site-packages\PyInstaller\depend\analysis.py", line 201, in run_script
+    self._top_script_node = super(PyiModuleGraph, self).run_script(pathname)
+  File "c:\Python34\lib\site-packages\PyInstaller\lib\modulegraph\modulegraph.py", line 1338, in run_script
+    contents = fp.read() + '\n'
+  File "c:\Python34\lib\codecs.py", line 319, in decode
+    (result, consumed) = self._buffer_decode(data, self.errors, final)
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe9 in position 5: invalid continuation byte

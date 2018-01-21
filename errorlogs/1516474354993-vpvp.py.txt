@@ -1,0 +1,25 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+139 INFO: PyInstaller: 3.3.1
+139 INFO: Python: 3.4.4
+140 INFO: Platform: Windows-XP-5.1.2600-SP3
+141 INFO: wrote Z:\p2e\vpvp.spec
+147 INFO: UPX is not available.
+148 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+150 INFO: Extending PYTHONPATH with paths
+['Z:\\p2e\\workingdir\\1516474354993', 'Z:\\p2e']
+151 INFO: checking Analysis
+151 INFO: Building Analysis because out00-Analysis.toc is non existent
+151 INFO: Initializing module dependency graph...
+158 INFO: Initializing module graph hooks...
+162 INFO: Analyzing base_library.zip ...
+6767 INFO: Processing pre-find module path hook   distutils
+9876 INFO: running Analysis out00-Analysis.toc
+10362 INFO: Caching module hooks...
+10375 INFO: Analyzing Z:\p2e\workingdir\1516474354993\vpvp.py
+
+Syntax error in Z:\p2e\workingdir\1516474354993\vpvp.py
+  File "Z:\p2e\workingdir\1516474354993\vpvp.py", line 82
+     print nse
+             ^
+ SyntaxError: Missing parentheses in call to 'print'
+

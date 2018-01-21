@@ -1,6 +1,16 @@
+/*@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css');
+*/
+
+/*
 @font-face {
     font-family: "Nunito";
-    src: url(http://py2exe.net/font/Nunito-Light.ttf) format("truetype");
+    src: url("http://py2exe.net/font/Nunito-Light.ttf");
+}
+*/
+
+@font-face {
+	font-family: "Nunito";
+	src: url("/font/Nunito-Light.ttf");
 }
 
 body {
@@ -9,10 +19,13 @@ body {
 	background-color: #FBFBFB;
 }
 
+
+
 .importlibscontainer,
 .addfilescontainer,
 .customiconcontainer,
-.appspeccontainer {
+.appspeccontainer,
+.importmodulescontainer {
   display: none;
 }
 
@@ -50,20 +63,20 @@ a:hover {
 
 .fileselector1,
 .fileselector2,
-.fileselector3
+.fileselector3,
+.fileselector4
 {
 	border: 1px dashed lightgrey;
 	padding: 10px;
 	color: grey;
 	border-radius: 5px;
-	text-align: left;
+	text-align: center;
 	cursor: pointer;
-  padding-left: 15px;
 }
 
 .yellow-rectangle {
   width: 10px;
-  height: 14px;
+  height: 11px;
   background: #FFCC00;
   margin-right: 10px;
   margin-left: -10px;
@@ -89,11 +102,11 @@ a:hover {
 .console-based
 {
 	border: solid 3px #EEEEEE;
-	padding: 10px;
+	padding: 8px;
 	text-align: center;
 	color: lightgrey;
 	cursor: pointer;
-  border-radius: 3px;
+	border-radius: 3px;
 }
 
 .footer {
@@ -144,6 +157,7 @@ a:hover {
 	padding: 20px;
 	color: grey;
 	border: 1px lightgrey solid;
+	min-height: 600px !important;
 }
 
 .whatispytoexe {
@@ -164,7 +178,7 @@ a:hover {
 }
 
 .logo-text-description {
-  margin-top: 19px;
+  margin-top: 15px;
   margin-left: 20px;
   color: grey;
   font-size: 17px;
@@ -224,6 +238,10 @@ a:hover {
 }
 
 #upload-input-3 {
+  display: none;
+}
+
+#upload-input-4 {
   display: none;
 }
 
@@ -315,19 +333,21 @@ ul.tagit li:not(:first-child) ::placeholder {opacity: 0;}
 .showbutton_addfiles,
 .showbutton_importlibs,
 .showbutton_icofile,
-.showbutton_appspec {
+.showbutton_appspec,
+.showbutton_importmodules {
   cursor: pointer;
-  border: 1px solid #1EAEDB;
+  border: 1px solid #1eaedb5e;
   padding: 3px;
   padding-right: 10px;
   padding-left: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .showbutton_addfiles:hover,
 .showbutton_importlibs:hover,
 .showbutton_icofile:hover,
-.showbutton_appspec:hover {
+.showbutton_appspec:hover,
+.showbutton_importmodules:hover {
   color: #1EAEDB;
 }
 
@@ -357,15 +377,35 @@ ul.tagit li:not(:first-child) ::placeholder {opacity: 0;}
 .bigseparator {
 	border-top: 1px dashed lightgrey;
 	border-bottom: 1px dashed #fff;
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
 }
 
 .eight.columns.bordershadow.steps {
 	margin-left: 3.97%;
 	margin-top: 15px;
 }
+.hoverd:hover {
+	background-color: rgba(69, 139, 198, 0.20) !important;
+}
 
+.download_bat_file {
+	margin-top: 130px;
+    padding: 10px;
+    background-color: #FFF3CF;
+    border-radius: 5px;
+}
 
+.py2_button,
+.py3_button
+{
+	border: solid 3px #EEEEEE;
+	padding: 8px;
+	text-align: center;
+	color: lightgrey;
+	cursor: pointer;
+	border-radius: 3px;
+	width: 7%;
+}
 
 

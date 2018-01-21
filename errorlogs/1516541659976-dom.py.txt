@@ -1,0 +1,25 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+152 INFO: PyInstaller: 3.3.1
+153 INFO: Python: 3.4.4
+153 INFO: Platform: Windows-XP-5.1.2600-SP3
+155 INFO: wrote Z:\p2e\dom.spec
+161 INFO: UPX is not available.
+161 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+169 INFO: Extending PYTHONPATH with paths
+['Z:\\p2e\\workingdir\\1516541659976', 'Z:\\p2e']
+170 INFO: checking Analysis
+170 INFO: Building Analysis because out00-Analysis.toc is non existent
+170 INFO: Initializing module dependency graph...
+180 INFO: Initializing module graph hooks...
+183 INFO: Analyzing base_library.zip ...
+7160 INFO: Processing pre-find module path hook   distutils
+10368 INFO: running Analysis out00-Analysis.toc
+10924 INFO: Caching module hooks...
+10937 INFO: Analyzing Z:\p2e\workingdir\1516541659976\dom.py
+
+Syntax error in Z:\p2e\workingdir\1516541659976\dom.py
+  File "Z:\p2e\workingdir\1516541659976\dom.py", line 19
+     from __future__ import absolute_import, division
+                                                    ^
+ SyntaxError: from __future__ imports must occur at the beginning of the file
+

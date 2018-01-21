@@ -1,0 +1,2 @@
+Error: Command failed: mv "./uploads/ssss.ico" ./workingdir/1516560405131/additionalicon/
+mv: cannot stat './uploads/ssss.ico': No such file or directory

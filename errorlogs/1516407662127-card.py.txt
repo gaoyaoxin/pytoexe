@@ -1,0 +1,25 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+282 INFO: PyInstaller: 3.3.1
+282 INFO: Python: 3.4.4
+283 INFO: Platform: Windows-XP-5.1.2600-SP3
+288 INFO: wrote Z:\p2e\card.spec
+303 INFO: UPX is not available.
+303 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+Traceback (most recent call last):
+  File "C:\Python34\Scripts\pyinstaller-script.py", line 9, in <module>
+    load_entry_point('PyInstaller==3.3.1', 'console_scripts', 'pyinstaller')()
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 94, in run
+    run_build(pyi_config, spec_file, **vars(args))
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 46, in run_build
+    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 791, in main
+    build(specfile, kw.get('distpath'), kw.get('workpath'), kw.get('clean_build'))
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 687, in build
+    shutil.rmtree(f)
+  File "c:\Python34\lib\shutil.py", line 482, in rmtree
+    return _rmtree_unsafe(path, onerror)
+  File "c:\Python34\lib\shutil.py", line 377, in _rmtree_unsafe
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "c:\Python34\lib\shutil.py", line 375, in _rmtree_unsafe
+    os.unlink(fullname)
+PermissionError: [WinError 32] Sharing violation: 'C:\\users\\root\\Application Data\\pyinstaller\\bincache00_py34_32bit\\libopenblas.uwvn3xtd2lss7sfifk6tiq5gonfdbjku.gfortran-win32.dll'

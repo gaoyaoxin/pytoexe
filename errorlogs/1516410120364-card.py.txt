@@ -1,0 +1,75 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+134 INFO: PyInstaller: 3.3.1
+134 INFO: Python: 3.4.4
+135 INFO: Platform: Windows-XP-5.1.2600-SP3
+136 INFO: wrote Z:\p2e\card.spec
+141 INFO: UPX is not available.
+142 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+150 INFO: Extending PYTHONPATH with paths
+['Z:\\p2e\\workingdir\\1516410120364', 'Z:\\p2e']
+150 INFO: checking Analysis
+150 INFO: Building Analysis because out00-Analysis.toc is non existent
+150 INFO: Initializing module dependency graph...
+158 INFO: Initializing module graph hooks...
+162 INFO: Analyzing base_library.zip ...
+6646 INFO: Processing pre-find module path hook   distutils
+9894 INFO: running Analysis out00-Analysis.toc
+10381 INFO: Caching module hooks...
+10393 INFO: Analyzing Z:\p2e\workingdir\1516410120364\card.py
+10522 INFO: Loading module hooks...
+10523 INFO: Loading module hook "hook-distutils.py"...
+10525 INFO: Loading module hook "hook-encodings.py"...
+10706 INFO: Loading module hook "hook-pydoc.py"...
+10707 INFO: Loading module hook "hook-xml.py"...
+11306 INFO: Looking for ctypes DLLs
+11364 INFO: Analyzing run-time hooks ...
+11377 INFO: Looking for dynamic libraries
+11609 INFO: Looking for eggs
+11609 INFO: Using Python library c:\Python34\python34.dll
+11610 INFO: Found binding redirects: 
+[]
+11614 INFO: Warnings written to ./workingdir/1516410120364/build/card\warncard.txt
+11719 INFO: Graph cross-reference written to ./workingdir/1516410120364/build/card\xref-card.html
+11760 INFO: checking PYZ
+11761 INFO: Building PYZ because out00-PYZ.toc is non existent
+11761 INFO: Building PYZ (ZlibArchive) ./workingdir/1516410120364/build/card\out00-PYZ.pyz
+13128 INFO: Building PYZ (ZlibArchive) ./workingdir/1516410120364/build/card\out00-PYZ.pyz completed successfully.
+13159 INFO: checking PKG
+13160 INFO: Building PKG because out00-PKG.toc is non existent
+13160 INFO: Building PKG (CArchive) out00-PKG.pkg
+13177 INFO: Updating manifest in C:\users\root\Application Data\pyinstaller\bincache00_py34_32bit\python34.dll
+13178 INFO: Updating resource type 24 name 2 language 1033
+15174 INFO: Building PKG (CArchive) out00-PKG.pkg completed successfully.
+15180 INFO: Bootloader c:\Python34\lib\site-packages\PyInstaller\bootloader\Windows-32bit\run.exe
+15181 INFO: checking EXE
+15181 INFO: Building EXE because out00-EXE.toc is non existent
+15181 INFO: Building EXE from out00-EXE.toc
+15184 INFO: SRCPATH [('workingdir\\1516410120364\\additionalicon\\ssss.ico', None)]
+15184 INFO: Updating icons from ['workingdir\\1516410120364\\additionalicon\\ssss.ico'] to C:\users\root\Temp\tmprrvgcj4g
+Traceback (most recent call last):
+  File "C:\Python34\Scripts\pyinstaller-script.py", line 9, in <module>
+    load_entry_point('PyInstaller==3.3.1', 'console_scripts', 'pyinstaller')()
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 94, in run
+    run_build(pyi_config, spec_file, **vars(args))
+  File "c:\Python34\lib\site-packages\PyInstaller\__main__.py", line 46, in run_build
+    PyInstaller.building.build_main.main(pyi_config, spec_file, **kwargs)
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 791, in main
+    build(specfile, kw.get('distpath'), kw.get('workpath'), kw.get('clean_build'))
+  File "c:\Python34\lib\site-packages\PyInstaller\building\build_main.py", line 737, in build
+    exec(text, spec_namespace)
+  File "<string>", line 29, in <module>
+  File "c:\Python34\lib\site-packages\PyInstaller\building\api.py", line 420, in __init__
+    self.__postinit__()
+  File "c:\Python34\lib\site-packages\PyInstaller\building\datastruct.py", line 161, in __postinit__
+    self.assemble()
+  File "c:\Python34\lib\site-packages\PyInstaller\building\api.py", line 509, in assemble
+    icon.CopyIcons(tmpnm, self.icon)
+  File "c:\Python34\lib\site-packages\PyInstaller\utils\win32\icon.py", line 166, in CopyIcons
+    return CopyIcons_FromIco(dstpath, [srcpath])
+  File "c:\Python34\lib\site-packages\PyInstaller\utils\win32\icon.py", line 123, in CopyIcons_FromIco
+    for i, f in enumerate(icons):
+  File "c:\Python34\lib\site-packages\PyInstaller\utils\win32\icon.py", line 95, in __init__
+    entry.fromfile(file)
+  File "c:\Python34\lib\site-packages\PyInstaller\utils\win32\icon.py", line 65, in fromfile
+    self._fields_ = list(struct.unpack(self._format_, data))
+struct.error: unpack requires a bytes object of length 16

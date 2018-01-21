@@ -1,0 +1,25 @@
+err:winediag:SECUR32_initNTLMSP ntlm_auth was not found or is outdated. Make sure that ntlm_auth >= 3.0.25 is in your path. Usually, you can find it in the winbind package of your distribution.
+183 INFO: PyInstaller: 3.3.1
+184 INFO: Python: 3.4.4
+184 INFO: Platform: Windows-XP-5.1.2600-SP3
+186 INFO: wrote Z:\p2e\Program3- DeterminePrimes.spec
+193 INFO: UPX is not available.
+194 INFO: Removing temporary files and cleaning cache in C:\users\root\Application Data\pyinstaller
+202 INFO: Extending PYTHONPATH with paths
+['Z:\\p2e\\workingdir\\1516475002750', 'Z:\\p2e']
+203 INFO: checking Analysis
+203 INFO: Building Analysis because out00-Analysis.toc is non existent
+203 INFO: Initializing module dependency graph...
+213 INFO: Initializing module graph hooks...
+218 INFO: Analyzing base_library.zip ...
+7806 INFO: Processing pre-find module path hook   distutils
+10938 INFO: running Analysis out00-Analysis.toc
+11457 INFO: Caching module hooks...
+11469 INFO: Analyzing Z:\p2e\workingdir\1516475002750\Program3- DeterminePrimes.py
+
+Syntax error in Z:\p2e\workingdir\1516475002750\Program3- DeterminePrimes.py
+  File "Z:\p2e\workingdir\1516475002750\Program3- DeterminePrimes.py", line 32
+     print(f"There are {count} prime numbers less than {number_bound}.")
+                                                                      ^
+ SyntaxError: invalid syntax
+

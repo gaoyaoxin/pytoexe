@@ -1,100 +1,166 @@
 doctype html
 html(lang='en')
   head
+    script.
+        (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:750286,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        (function(){
+        var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+        })("woopra");
+        woopra.config({ domain: 'py2exe.net' });
+        woopra.track();
+    title py to exe | online converter | how to convert py to exe in 1 minute
+    meta(name='Description', content='Convert python to exe online. Convert your Python script (.py) into a standalone Windows executable (.exe) online in your browser. 100% free python to exe converter.')
+    meta(name='Keywords', content='python executable windows, create exe from python, online converter, py to app, python to exe, py2app, py to exe, py2exe, python windows, create windows executable python, python to windows, generate exe from python, python script to exe, exe generator, python to exe converter online, online python compiler, py2exe for windows, pyinstaller, deploy python application, distribute python, package python')
     meta(charset='utf-8')
-    title Py2Exe Free Online Converter
-    meta(name='description', content='')
-    meta(name='author', content='')
     link(rel='stylesheet', href='css/skeleton.css')
     link(rel='stylesheet', href='css/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.4/css/components/progress.css')
     link(href='css/jquery.tagit.css', rel='stylesheet', type='text/css')
     link(href='css/tagit.ui-zendesk.css', rel='stylesheet', type='text/css')
-    link(rel='icon', type='image/png', href='images/favicon.png')
+    link(rel='icon', type='image/png', href='images/favicon.ico')
   body
     noscript
       center.noscriptmsg Please enable javascript
     .container
       .row
         .twelve.columns
-          img.u-pull-left.imglogo(src='https://www.python.org/static/opengraph-icon-200x200.png')
-          p.u-pull-left.logo-text  py2exe 
-          p.u-pull-left.logo-text-description  online converter 
-          .u-pull-right.ghbut
-            a.github-button(href='https://github.com/michaelcukier', data-size='large', aria-label='Follow @michaelcukier on GitHub')
-              | Follow @michaelcukier
-            a.github-button(href='https://github.com/michaelcukier/py2exe.net', data-icon='octicon-star', data-size='large', data-show-count='true', aria-label='Star michaelcukier/py2exe.net on GitHub')
-              | Star
+          img.u-pull-left.imglogo(src='images/pylogo.png', alt='Python Official Logo')
+          h1.u-pull-left.logo-text  py to exe 
+          .u-pull-left.logo-text-description  online converter 
+          .socialbtngroup
+            a.u-pull-right.social-btn-gap.social-btn(href='https://www.facebook.com/Py2App-553330731684826/', onclick='trackfcbclick()')
+              i.fa.fa-facebook-official.fa-2x(aria-hidden='true')
+            a.u-pull-right.social-btn.social-btn-gap(href='https://github.com/michaelcukier/', onclick='trackgithubclick()')
+              i.fa.fa-github.fa-2x(aria-hidden='true')
+            a.u-pull-right.social-btn(href='http://michaelcukier.com', onclick='trackblogclick()')
+              i.fa.fa-male.fa-2x(aria-hidden='true')
       .row
-        .twelve.columns.bordershadow.site-description
-          .whatispytoexe  What is Py2Exe.net? 
+        .four.columns.bordershadow.site-description
+          h2.whatispytoexe(style="letter-spacing: 0px; font-size: 20px !important; ")  • What is Py2Exe.net? 
           br
-          |         Py2Exe.net is an online utility that allows you to easily convert py to exe
+          p(style='margin-bottom: 0px; font-size: 15px; letter-spacing:.5px;')
+            | Py2Exe.net is a web based Python to Exe converter and online utility that allows you to easily convert your python script into a Windows executable. Create exe from python easily, distribute your python application with dependencies in minutes, share your python code with anyone, and send python code to someone without python. Python 2 and Python 3 supported. </br>
+          h2.whatispytoexe(style="letter-spacing: 0px; margin-top: 10px; margin-bottom: -20px; font-size: 20px !important;")  • HOW TO convert py to exe, step by step:
+          br
+          p(style='margin-bottom: 0px; font-size: 15px; letter-spacing:.5px;') 1. upload your .py script, choose the right version. </br> 2. import libraries/data files/custom icon (optional) </br> 3. click on convert </br>
       .row
+        .room_id
+        .eight.columns.bordershadow.steps.s2(style='margin-top: 0px;')
+          .yellow-rectangle(style="margin-top: 4px !important;").u-pull-left  
+          |  UPLOAD YOUR .PY FILE
+          br
+          .hr
+          .py3_button.u-pull-left  Py 3 
+          .py2_button.u-pull-left(style='margin-left: 1%; margin-right: 1%;')  Py 2
+          .fileselector1.upload-btn.u-pull-right(style="width: 68%")
+            i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; color: darkgrey;')
+            |  Select your .py file...
+          .uploadcontainer
+            input#upload-input-1(type='file', name='uploads[]')
+          // .text-info  Must be a Python script version 3.* 
+      //
+        .row
         .twelve.columns.bordershadow.steps
-          .yellow-rectangle.u-pull-left  
-          |  1  ➜  UPLOAD YOUR .PY FILE 
-          br
-          hr
-          .fileselector1.upload-btn
-            i.fa.fa-cloud-upload(aria-hidden='true')
-            |  Drop or select your .py file...
-          input#upload-input-1(type='file', name='uploads[]')
+        .yellow-rectangle.u-pull-left
+        |  2  ➜  CHOOSE PYTHON VERSION
+        br
+        hr
+        .pythonversion2.u-pull-left  Python 2
+        .pythonversion3.u-pull-left(style='margin-left: 10px;')  Python 3
       .row
-        .twelve.columns.bordershadow.steps
-          .yellow-rectangle.u-pull-left  
-          |  2  ➜  CHOOSE PYTHON VERSION 
-          br
-          hr
-          .pythonversion2.u-pull-left  Python 2 
-          .pythonversion3.u-pull-left(style='margin-left: 10px;')  Python 3 
+        .eight.columns.bordershadow.steps.s3
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;LIBRARIES, INSTALLED WITH PIP
+          a.showbutton_importlibs.u-pull-right  
+          .importlibscontainer
+            .hr.hr1
+            .autotags
+              ul#myTags
+            .text-info
+              |  • you must write the libraries as you would do 'pip install ...'
+              br
+              | • examples: facebook-sdk, selenium, numpy, pandas
       .row
-        .twelve.columns.bordershadow.steps
-          .yellow-rectangle.u-pull-left  
-          |  3  ➜  IMPORT LIBRARIES (OPTIONAL) 
-          hr
-          .autotags
-            ul#myTags
-          |  • examples: facebook-sdk, selenium, numpy, pandas
-          br
-          |  • you must write the libraries as you would do 'pip install ...'
+        .eight.columns.bordershadow.steps.s8
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;EXTERNAL .PY MODULE(S)
+          a.showbutton_importmodules.u-pull-right  
+          .importmodulescontainer
+            .hr.hr1
+            .fileselector4.upload-btn
+              i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; color: darkgrey;')
+              |  Select additional .py module(s)...
+            input#upload-input-4(type='file', name='uploads[]', multiple='multiple')
+            .text-info
+              |  • upload here the modules that your .py script use.
+              br
+              | • example: if you have "import mymodule" in your initial python file and it relies on "mymodule.py", upload "mymodule.py" here.
       .row
-        .twelve.columns.bordershadow.steps
-          .yellow-rectangle.u-pull-left  
-          |  4  ➜  ADDITIONAL FILES (OPTIONAL) 
-          br
-          hr
-          .fileselector2.upload-btn
-            i.fa.fa-cloud-upload(aria-hidden='true')
-            |  Drop or select additional file(s)...
-          input#upload-input-2(type='file', name='uploads[]', multiple="multiple")
+        .eight.columns.bordershadow.steps.s4
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;ADDITIONAL DATA FILE(S) (FONTS, MP3's, IMAGES...)
+          a.showbutton_addfiles.u-pull-right 
+          .addfilescontainer
+            .hr.hr2
+            .fileselector2.upload-btn
+              i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; color: darkgrey;')
+              |  Select additional file(s)...
+            input#upload-input-2(type='file', name='uploads[]', multiple='multiple')
+            .text-info
+              | •  These files will be packed INSIDE the .exe file.
+              br
+              |  • do NOT write the path of the additional file(s) in your .py script. Just write the name of the file.
+              br
+              |  • example: change "C://me//desktop//myfont.ttf" in your python script  TO  "myfont.ttf"
+              //br
+              // |  • if you don't upload all the files needed by your .py script, your .exe will crash.
       .row
-        .twelve.columns.bordershadow.steps
-          .yellow-rectangle.u-pull-left  
-          |  5  ➜  CUSTOM ICON (OPTIONAL) 
-          br
-          hr
-          .fileselector3.upload-btn
-            i.fa.fa-cloud-upload(aria-hidden='true')
-            |  Drop or select your .ico file...
-          input#upload-input-3(type='file', name='uploads[]')
+        .eight.columns.bordershadow.steps.s5
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;CUSTOM .ICO ICON 
+          a.showbutton_icofile.u-pull-right 
+          .customiconcontainer
+            .hr.hr3
+            .fileselector3.upload-btn
+              i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; color: darkgrey;')
+              |  Select your .ico file...
+            input#upload-input-3(type='file', name='uploads[]')
       .row
-        .twelve.columns.convertbutton
+        .eight.columns.bordershadow.steps.s6
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;WINDOW-BASED OR CONSOLE-BASED, DEFAULT: CONSOLE-BASED
+          a.showbutton_appspec.u-pull-right 
+          .appspeccontainer
+            .hr.hr4
+            .console-based.u-pull-left(style='margin-right: 10px;')  Console-based   
+            .window-based.u-pull-left  Window-based (I want to hide the console)
+      .row
+        .eight.columns.convertbutton.s7
           .button.button-primary.convbut  CONVERT .PY TO .EXE NOW 
-      .whatcurrent
-      .row
-        .twelve.columns.footer.bordershadow
-          a.social-btn(href='https://www.facebook.com/Py2App-553330731684826/')
-            i.fa.fa-facebook-official.fa-2x(aria-hidden='true')
-          a.social-btn.social-btn-gap(href='https://github.com/michaelcukier/py2exe.net/')
-            i.fa.fa-github.fa-2x(aria-hidden='true')
-          a.social-btn.social-btn-gap(href='http://michaelcukier.com')
-            i.fa.fa-male.fa-2x(aria-hidden='true')
-  script(src='https://buttons.github.io/buttons.js')
-  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
-  script(src="/js/socket.io.js") 
+      // .whatcurrent
+      //
+        .row
+        .twelve.columns.footer
+        a.social-btn(href='https://www.facebook.com/Py2App-553330731684826/' onClick="trackfcbclick()")
+        i.fa.fa-facebook-official.fa-2x(aria-hidden='true')
+        a.social-btn.social-btn-gap(href='https://github.com/michaelcukier/')
+        i.fa.fa-github.fa-2x(aria-hidden='true')
+        a.social-btn.social-btn-gap(href='http://michaelcukier.com' onClick="trackblogclick()")
+        i.fa.fa-male.fa-2x(aria-hidden='true')
+  // script(src='https://buttons.github.io/buttons.js')
+  script(src='/js/ResizeSensor.js')
+  script(src='/js/ElementQueries.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  script(src='/js/socket.io.js')
   script(src='https://unpkg.com/sweetalert2@7.2.0/dist/sweetalert2.all.js')
   script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js', type='text/javascript', charset='utf-8')
-  script(src='js/tag-it.js', type='text/javascript', charset='utf-8')
+  script(src='/js/tag-it.js', type='text/javascript', charset='utf-8')
   script(src='/js/main.js')

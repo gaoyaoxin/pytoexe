@@ -1,0 +1,2 @@
+Error: Command failed: rm "./card.spec"
+rm: cannot remove './card.spec': No such file or directory

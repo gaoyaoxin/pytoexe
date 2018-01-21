@@ -1,0 +1,2 @@
+Error: Command failed: rm "./test.spec"
+rm: cannot remove './test.spec': No such file or directory
