@@ -4,6 +4,8 @@
 
 # Stack
 - Built using Node.JS
+* <a href="https://github.com/pyinstaller/pyinstaller">PyInstaller</a> to build the standalone executable
+* <a href="https://github.com/wine-mirror/wine">Wine</a>
 * <a href="https://github.com/socketio/socket.io"> Socket.io </a> to establish long connection between client and server and update the frontend in realtime.
 * <a href="https://github.com/expressjs/express"> Express </a> to build the server
 * <a href="https://github.com/caolan/async"> Async </a> to run the shell commands in series
