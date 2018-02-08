@@ -92,7 +92,7 @@ function exefiletrack_() {
 
 // test above
 
-$('.py3_button').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+$('.py3_button').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
 
 new ResizeSensor(jQuery($(".s3")), function() {
   totalHeight = (($(".s2").height()) + ($(".s3").height()) + ($(".s4").height()) + ($(".s5").height()) + ($(".s6").height()) + ($(".s7").height()) + ($(".s8").height())); 
@@ -274,16 +274,18 @@ function exefiletrack(room_id_, file_name_no_ext_) {
   function downloadexefile() {
     // window.location.href='#';
     // $(".bigseparator").show();
+    $(".swal2-close").css('visibility', 'visible');
+    $(".swal2-close").attr('onClick', 'justPutBack()');
     $(".isitworking").html("<div class='likebutton u-pull-left' onClick='itworks()'> <i style='margin-bottom: 10px;' class='fa fa-thumbs-up fa-2x' aria-hidden='true'></i> <div style='font-size: 15px;'> MY .EXE WORKS </div> </div> <div class='dislikebutton u-pull-right' onClick='itdoesntwork()'> <i style='margin-bottom: 10px;' class='fa fa-thumbs-down fa-2x' aria-hidden='true'></i> <div style='font-size: 15px;'> MY .EXE DOESN'T WORK </div> </div>");
     $(".downloadNow").hide();
-    $(".changeText").text("Download started...");
+    $(".changeText").text("Download should start...");
     $('swal2-modal').append('<div class="swal2-icon swal2-success"><span class="swal2-x-mark swal2-animate-x-mark"><span class="swal2-x-mark-line-left"></span><span class="swal2-x-mark-line-right"></span></span></div>')
     $('.swal2-icon.swal2-success').css("display", "block");
     $(".explainer").text("Care to give your opinion? ");
     $(".explainer").css("margin-bottom", "22px");
 
     $(".download_bat_file").show();
-    $(".download_bat_file").html("<div class='down_bat'> Your .exe opens and closes immediately? <br> <a href='/pyfilesdownload/"+room_id_+'/'+file_name_no_ext_+".bat' class='link_remove_underline'> Download this .bat file </a>and run it. <br> Make sure it's in the same folder as the .exe </div>");
+    $(".download_bat_file").html("<div class='down_bat'> Your .exe opens and closes immediately? <br> This means there's an error in the .exe file. <br> To be able to see that error, <br> <a href='/pyfilesdownload/"+room_id_+'/'+file_name_no_ext_+".bat' class='link_remove_underline'> download this .bat file </a>and run it. <br> Make sure it's in the same folder as the .exe </div>");
     
     window.location.href='/pyfilesdownload/'+room_id_+'/'+file_name_no_ext_+'.exe';
   }
@@ -377,19 +379,19 @@ $(function(){
   $('#myTags').tagit({
     placeholderText: "Write your libraries here..."
   });
-  $('.console-based').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+  $('.console-based').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
 });
 
 pyfile_step1 = false;
 
 pyversion_step2 = 3;
 $('.py2_button').on('click', function () {
-  $('.py2_button').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+  $('.py2_button').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
   $('.py3_button').css({'border':'solid 3px #EEEEEE', 'color':'lightgrey'});
   pyversion_step2 = 2;
 });
 $('.py3_button').on('click', function () {
-  $('.py3_button').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+  $('.py3_button').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
   $('.py2_button').css({'border':'solid 3px #EEEEEE', 'color':'lightgrey'});
   pyversion_step2 = 3;
 });
@@ -399,12 +401,12 @@ $('.py3_button').on('click', function () {
 
 window_based = false;
 $('.window-based').on('click', function () {
-  $('.window-based').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+  $('.window-based').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
   $('.console-based').css({'border':'solid 3px #EEEEEE', 'color':'lightgrey'});
   window_based = true;
 });
 $('.console-based').on('click', function () {
-  $('.console-based').css({'border':'solid 3px rgb(97, 166, 97)', 'color':'rgb(97, 166, 97)'});
+  $('.console-based').css({'border':'solid 3px #488CC4', 'color':'#488CC4'});
   $('.window-based').css({'border':'solid 3px #EEEEEE', 'color':'lightgrey'});
   window_based = false;
 });
@@ -442,28 +444,28 @@ $('#upload-input-1').on('change', function(){
     if (this.files[0].size > 10000000) {
       woopra.track('(frontend) ERROR: .py file size exceed 10mb');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: file size exceed 10MB");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: file size exceed 10MB");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
 
     } else if (regexcheckname(file.name) == true) {
       woopra.track('(frontend) Error: please name your file with english characters only');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: please name your file with english characters only");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: please name your file with english characters only");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
 
     } else if (count(file.name, '\\.') > 1) {
       woopra.track('(frontend) Error: your python file name contains 2 or more dots: please rename it so that it contains only one dot');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
 
     } else if ((file.name).indexOf("'") > -1) {
       woopra.track('(frontend) Error: Incorrect .py file with single quote');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
 
@@ -471,7 +473,7 @@ $('#upload-input-1').on('change', function(){
       $('.fileselector1').text("Incorrect .py file");
       woopra.track('(frontend) Error: Incorrect .py file with double quote');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "Error: incorrect file name");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
 
@@ -502,7 +504,7 @@ $('#upload-input-1').on('change', function(){
 
               // once the upload reaches 100%, set the progress bar text to done
               if (percentComplete === 100) {
-                $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-check-circle" aria-hidden="true"></i>' + file.name);
+                $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-check" aria-hidden="true"></i>' + file.name);
                 $('.fileselector1').css("border","1px solid #61A661");
                 $('.fileselector1').css("color"," #61A661");
                 pyfile_step1 = $('.fileselector1').text();
@@ -515,7 +517,7 @@ $('#upload-input-1').on('change', function(){
     } else {
       woopra.track('(frontend) Error: this is not a .py file');
       pyfile_step1 = false;
-      $('.fileselector1').html('<i style="margin-right: 10px" class="fa fa-times-circle" aria-hidden="true"></i>' + "This is not a .py file");
+      $('.fileselector1').html('<i style="margin-right: 10px; margin-top: 42px;" class="fa fa-times-circle" aria-hidden="true"></i>' + "This is not a .py file");
       $('.fileselector1').css("border","1px solid #c9302c");
       $('.fileselector1').css("color"," #c9302c");
     }
@@ -634,7 +636,7 @@ $('#upload-input-2').on('change', function(){
 
             // once the upload reaches 100%, set the progress bar text to done
             if (percentComplete === 100) {
-              $('.fileselector2').html('<i style="margin-right: 10px" class="fa fa-check-circle" aria-hidden="true"></i>' + allnames.toString().replace(/,/g, " - "));
+              $('.fileselector2').html('<i style="margin-right: 10px" class="fa fa-check" aria-hidden="true"></i>' + allnames.toString().replace(/,/g, " - "));
               $('.fileselector2').css("border","1px solid #61A661");
               $('.fileselector2').css("color"," #61A661");
               addfiles_step2 = $('.fileselector2').text();
@@ -737,7 +739,7 @@ $('#upload-input-3').on('change', function(){
 
               // once the upload reaches 100%, set the progress bar text to done
               if (percentComplete === 100) {
-                $('.fileselector3').html('<i style="margin-right: 10px" class="fa fa-check-circle" aria-hidden="true"></i>' + file.name);
+                $('.fileselector3').html('<i style="margin-right: 10px" class="fa fa-check" aria-hidden="true"></i>' + file.name);
                 $('.fileselector3').css("border","1px solid #61A661");
                 $('.fileselector3').css("color"," #61A661");
                 icofiles_step3 = $('.fileselector3').text();
@@ -888,7 +890,7 @@ $('#upload-input-4').on('change', function(){
 
             // once the upload reaches 100%, set the progress bar text to done
             if (percentComplete === 100) {
-              $('.fileselector4').html('<i style="margin-right: 10px" class="fa fa-check-circle" aria-hidden="true"></i>' + allnames.toString().replace(/,/g, " - "));
+              $('.fileselector4').html('<i style="margin-right: 10px" class="fa fa-check" aria-hidden="true"></i>' + allnames.toString().replace(/,/g, " - "));
               $('.fileselector4').css("border","1px solid #61A661");
               $('.fileselector4').css("color"," #61A661");
               addmodules_step4 = $('.fileselector4').text();
@@ -1145,8 +1147,6 @@ $('.convbut').on('click', function (){
       document.title = 'Done!';
 
       $(".downloadNow").append("<script>woopra.track('made one convertion successfully', { amount: '" + data.roomfolder + "/" + data.filenamenoext + ".exe' });</script>");
-      $(".swal2-close").css('visibility', 'visible');
-      $(".swal2-close").attr('onClick', 'justPutBack()');
       $(".swal2-title").html('<div class="changeText"> <i class="fa fa-check" aria-hidden="true"></i> Success! </div>');
       $(".swal2-image").hide();
       $(".downloadNow").html("<a style='color: #458bc6' class='link_remove_underline'> <i class='fa fa-download' aria-hidden='true'></i> <strong> DOWNLOAD .EXE </strong> </a>");
