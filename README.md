@@ -12,4 +12,4 @@
 - For the frontend, I've mainly used <a href="https://github.com/jquery/jquery">JQuery</a>, <a href="https://github.com/sweetalert2/sweetalert2">SweetAlert2</a>, <a href="https://github.com/aehlke/tag-it">Tag-it</a>, <a href="https://github.com/procurios/ResizeSensor">ResizeSensor</a>, and <a href="https://github.com/dhg/Skeleton"> Skeleton </a>
 
 # Contribute
-If you have any idea on how to improve this project, don't hesitate to <a href="michaelcukier.com"> get in touch with me</a>
+If you have any idea on how to improve this project, don't hesitate to <a href="http://michaelcukier.com"> get in touch with me</a>
