@@ -3,7 +3,7 @@
 <hr/>
 
 # Stack
-- Built using Node.JS
+- Entirely made in javascript, with <a href="https://github.com/nodejs/node"> Node </a>
 * <a href="https://github.com/pyinstaller/pyinstaller">PyInstaller</a> to build the standalone executable
 * <a href="https://github.com/wine-mirror/wine">Wine</a> to fake a Windows environment on Linux
 * <a href="https://github.com/socketio/socket.io"> Socket.io </a> to establish long connection between client and server and update the frontend in realtime.
