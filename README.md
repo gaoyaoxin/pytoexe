@@ -2,14 +2,14 @@
 <h3> online py → exe converter </h3>
 <hr/>
 
-<h2> Stack </h2>
+# Stack
 - Built using Node.JS
 * <a href="https://github.com/pyinstaller/pyinstaller">PyInstaller</a> to build the standalone executable
-* <a href="https://github.com/wine-mirror/wine">Wine</a> to fake a Windows environment
+* <a href="https://github.com/wine-mirror/wine">Wine</a>
 * <a href="https://github.com/socketio/socket.io"> Socket.io </a> to establish long connection between client and server and update the frontend in realtime.
 * <a href="https://github.com/expressjs/express"> Express </a> to build the server
 * <a href="https://github.com/caolan/async"> Async </a> to run the shell commands in series
 - For the frontend, I've used numerous libraries, mainly <a href="https://github.com/jquery/jquery">JQuery</a>, <a href="https://github.com/sweetalert2/sweetalert2">SweetAlert2</a>, <a href="https://github.com/aehlke/tag-it">Tag-it</a> and <a href="https://github.com/procurios/ResizeSensor">ResizeSensor</a>.
 
-<h2> Contribute </h2>
+# Contribute
 If you have any idea on how to improve this project, don't hesitate to <a href="http://www.michaelcukier.com/home/"> get in touch with me</a> ! 
