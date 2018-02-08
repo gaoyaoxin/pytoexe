@@ -15,7 +15,7 @@ html(lang='en')
         })("woopra");
         woopra.config({ domain: 'py2exe.net' });
         woopra.track();
-    title py to exe | online converter | how to convert py to exe in 1 minute
+    title py to exe | online converter | how to convert py to exe easily
     meta(name='Description', content='Convert python to exe online. Convert your Python script (.py) into a standalone Windows executable (.exe) online in your browser. 100% free python to exe converter.')
     meta(name='Keywords', content='python executable windows, create exe from python, online converter, py to app, python to exe, py2app, py to exe, py2exe, python windows, create windows executable python, python to windows, generate exe from python, python script to exe, exe generator, python to exe converter online, online python compiler, py2exe for windows, pyinstaller, deploy python application, distribute python, package python')
     meta(charset='utf-8')
@@ -36,19 +36,15 @@ html(lang='en')
           h1.u-pull-left.logo-text  py to exe 
           .u-pull-left.logo-text-description  online converter 
           .socialbtngroup
-            a.u-pull-right.social-btn-gap.social-btn(href='https://www.facebook.com/Py2App-553330731684826/', onclick='trackfcbclick()')
-              i.fa.fa-facebook-official.fa-2x(aria-hidden='true')
-            a.u-pull-right.social-btn.social-btn-gap(href='https://github.com/michaelcukier/', onclick='trackgithubclick()')
+            a.u-pull-right.social-btn.social-btn-gap(href='https://github.com/michaelcukier/py-to-exe', onclick='trackgithubclick()')
               i.fa.fa-github.fa-2x(aria-hidden='true')
-            a.u-pull-right.social-btn(href='http://michaelcukier.com', onclick='trackblogclick()')
-              i.fa.fa-male.fa-2x(aria-hidden='true')
       .row
         .four.columns.bordershadow.site-description
-          h2.whatispytoexe(style="letter-spacing: 0px; font-size: 20px !important; ")  • What is Py2Exe.net? 
+          h2.whatispytoexe(style="letter-spacing: 0px; font-size: 20px !important; ")  What is Py2Exe.net? 
           br
           p(style='margin-bottom: 0px; font-size: 15px; letter-spacing:.5px;')
-            | Py2Exe.net is a web based Python to Exe converter and online utility that allows you to easily convert your python script into a Windows executable. Create exe from python easily, distribute your python application with dependencies in minutes, share your python code with anyone, and send python code to someone without python. Python 2 and Python 3 supported. </br>
-          h2.whatispytoexe(style="letter-spacing: 0px; margin-top: 10px; margin-bottom: -20px; font-size: 20px !important;")  • HOW TO convert py to exe, step by step:
+            | Py2Exe.net is a web based Python to Exe converter and online utility that allows you to easily convert your python script into a Windows executable. Create exe from python easily, distribute your python application with dependencies in minutes, share your python code with anyone, and send python code to someone without python. <br> • Python 2 and Python 3 supported. <br> • Using <a href='http://www.pyinstaller.org/' class='link_remove_underline'> PyInstaller </a> </br>
+          h2.whatispytoexe(style="letter-spacing: 0px; margin-top: 10px; margin-bottom: -20px; font-size: 20px !important;")  HOW TO convert py to exe, step by step:
           br
           p(style='margin-bottom: 0px; font-size: 15px; letter-spacing:.5px;') 1. upload your .py script, choose the right version. </br> 2. import libraries/data files/custom icon (optional) </br> 3. click on convert </br>
       .row
@@ -58,10 +54,13 @@ html(lang='en')
           |  UPLOAD YOUR .PY FILE
           br
           .hr
-          .py3_button.u-pull-left  Py 3 
-          .py2_button.u-pull-left(style='margin-left: 1%; margin-right: 1%;')  Py 2
-          .fileselector1.upload-btn.u-pull-right(style="width: 68%")
-            i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; color: darkgrey;')
+
+          .three.columns(style='border: solid 1px #EEEEEE;padding: 10px;height: 120px;')
+            .py3_button(style="margin-top: 0 !important;")  Python 3 
+            .py2_button(style='margin-left: 1%; margin-right: 1%; margin-top: 9px;')  Python 2
+
+          .fileselector1.upload-btn.u-pull-right.nine.columns(style="width: 68%")
+            i.fa.fa-cloud-upload(aria-hidden='true' style='margin-right: 7px; margin-top: 42px; color: darkgrey;')
             |  Select your .py file...
           .uploadcontainer
             input#upload-input-1(type='file', name='uploads[]')
@@ -76,20 +75,7 @@ html(lang='en')
         .pythonversion2.u-pull-left  Python 2
         .pythonversion3.u-pull-left(style='margin-left: 10px;')  Python 3
       .row
-        .eight.columns.bordershadow.steps.s3
-          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
-          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;LIBRARIES, INSTALLED WITH PIP
-          a.showbutton_importlibs.u-pull-right  
-          .importlibscontainer
-            .hr.hr1
-            .autotags
-              ul#myTags
-            .text-info
-              |  • you must write the libraries as you would do 'pip install ...'
-              br
-              | • examples: facebook-sdk, selenium, numpy, pandas
-      .row
-        .eight.columns.bordershadow.steps.s8
+        .eight.columns.bordershadow.steps.s8(style="margin-top: 15px;")
           i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
           |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;EXTERNAL .PY MODULE(S)
           a.showbutton_importmodules.u-pull-right  
@@ -115,13 +101,26 @@ html(lang='en')
               |  Select additional file(s)...
             input#upload-input-2(type='file', name='uploads[]', multiple='multiple')
             .text-info
-              | •  These files will be packed INSIDE the .exe file.
+              | • These files will be packed INSIDE the .exe file.
               br
               |  • do NOT write the path of the additional file(s) in your .py script. Just write the name of the file.
               br
               |  • example: change "C://me//desktop//myfont.ttf" in your python script  TO  "myfont.ttf"
               //br
               // |  • if you don't upload all the files needed by your .py script, your .exe will crash.
+      .row
+        .eight.columns.bordershadow.steps.s3
+          i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
+          |  (OPTIONAL)&nbsp;&nbsp;—&nbsp;&nbsp;LIBRARIES, INSTALLED WITH PIP
+          a.showbutton_importlibs.u-pull-right  
+          .importlibscontainer
+            .hr.hr1
+            .autotags
+              ul#myTags
+            .text-info
+              |  • you must write the libraries as you would do 'pip install ...'
+              br
+              | • examples: facebook-sdk, selenium, numpy, pandas
       .row
         .eight.columns.bordershadow.steps.s5
           i.fa.fa-cog(aria-hidden='true' style='margin-right: 7px;color: grey;margin-top: 8px; color: grey;margin-left: 6px;')
