@@ -229,7 +229,7 @@ io.on('connection', function(client) {
             callback(null, '');
           }
         },
-        // 2. replace every occurence of <filename> with resource_path(os.path.join('data', '<filename>'))
+        // 2. replace every occurence of <filename> with <resource_path(os.path.join('data', '<filename>'))>
         function (callback) {
           if (addfiles_ != false) {
             var str2 = addfiles_;
@@ -255,9 +255,9 @@ io.on('connection', function(client) {
         function (callback) {
 
         	if (pyversion_ == 3) {
-				global.finalCommand = 'wine pyinstaller -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --clean --onefile";
+				global.finalCommand = 'wine pyinstaller -y --log-level TRACE "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --clean --onefile";
         	} else if (pyversion_ == 2) {
-				global.finalCommand = 'wine /root/.wine/drive_c/Python27/Scripts/pyinstaller.exe -y "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --clean --onefile";
+				global.finalCommand = 'wine /root/.wine/drive_c/Python27/Scripts/pyinstaller.exe -y --log-level TRACE "./workingdir/' + room_ + '/' + filename_ + '" --distpath ./workingdir/' + room_ + "/dist/ --workpath ./workingdir/" + room_ + "/build/ --clean --onefile";
         	}
 
 	    	// get ico file if there is any
@@ -304,14 +304,27 @@ io.on('connection', function(client) {
 			var ls    = spawn('sh', ['-c', finalCommand]);
 
 			global.fullStdout = "";
+			lineCounter = 0;
 			ls.stderr.on('data', function (data) {
+				lineCounter += 1;
 				fullStdout += data.toString();
 				// console.log('stderr: ' + data.toString());
 				if ( (data.toString()).indexOf("Building EXE from out00-EXE.toc completed successfully") > -1) {
+
+
+					// to delete in the future
+					fs.writeFile("./numberoflines/number-of-lines-success-" + room_ + ".txt", lineCounter, function(the_error) {
+						if(the_error) { return console.log("couldnt write damn file"); }
+					});
+					// to delete in the future
+
+
 					callback(null, ''); // CONVERTION FINISHED 
 				}
 			});
 			ls.on('exit', function (code) {
+				// console.log(code);
+				// change above to if (code == 0) { ... }
 				if (code != 0) {
 					console.log("ERROR IN CONVERTION !");
 					if ((fullStdout.toString()).indexOf("struct.error: unpack requires a bytes object of length 16") > -1) {
@@ -337,7 +350,7 @@ io.on('connection', function(client) {
 
         function (callback) {
         	if (gotAndError == true) {
-				fs.writeFile("./errorlogs/" + room_ + "-" + filename_ + "-pyinstaller_error.txt", fullStdout, function(the_error) {
+				fs.writeFile("./errorlogs/pyinstaller-error" + room_ + "-" + filename_ + ".txt", fullStdout, function(the_error) {
 					if(the_error) { return console.log("couldnt write damn file"); }
 				});
 				callback(null, '');
@@ -372,7 +385,7 @@ io.on('connection', function(client) {
 // create .bat file for quick troubleshoot
 
         function (callback) {
-            require('child_process').exec('printf "' + no_ext_filename_ + '.exe & pause" > /p2e/public/pyfilesdownload/' + room_ + '/' + no_ext_filename_ + '.bat', callback);
+            require('child_process').exec('printf "' + no_ext_filename_ + '.exe & pause" > "/p2e/public/pyfilesdownload/' + room_ + '/' + no_ext_filename_ + '.bat"', callback);
         },
 
 // update frontend, convertion is finished
@@ -435,7 +448,7 @@ io.on('connection', function(client) {
 			} else {
 				io.to(room_).emit('error_happenned');
 			}
-			fs.writeFile("./errorlogs/" + room_ + "-" + filename_ + "-other_error.txt", err, function(the_error) {
+			fs.writeFile("./errorlogs/other-error-" + room_ + "-" + filename_ + ".txt", err, function(the_error) {
 				if(the_error) { return console.log("couldnt write damn file"); }
 			});
 			require('child_process').exec('rm "./' + no_ext_filename_ + '.spec"');
