@@ -1,6 +1,5 @@
 <h1> pytoexe </h1>
 <h3> online py → exe converter </h3>
-<hr/>
 
 # Stack
 - Entirely made in javascript, with <a href="https://github.com/nodejs/node"> Node </a>
